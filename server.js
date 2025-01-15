@@ -1,5 +1,3 @@
-// Features: Sections like About Me, Projects, Contact Form, and Resume; Use JavaScript for interactive elements (like animations or smooth scrolling); Host it on a platform like GitHub Pages.
-
 const http = require('http');
 const fs = require('fs');
 const url = require('url');
@@ -18,9 +16,9 @@ const server = http.createServer((req, res) => {
       res.write(data);
       res.end();
     });
-  }
-  else if (page === '/api/image/random') {
-    // grab a random photo from https://picsum.photos/seed/{seedtext}/600/400
+  } else if (page === '/api/image/random') {
+    // grab a random 600x400 photo from https://picsum.photos/600/400
+    // send this url back to the client to use as the source for the image
     res.writeHead(301, {
       Location: `https://picsum.photos/600/400`,
     });
