@@ -12,45 +12,28 @@ const server = http.createServer((req, res) => {
   console.log(page);
 
   // page load requests
-  if (page == '/') {
+  if (page === '/') {
     fs.readFile('index.html', function (err, data) {
       res.writeHead(200, { 'Content-Type': 'text/html' });
       res.write(data);
       res.end();
     });
-  } else if (page == '/api') {
-    if ('student' in params) {
-      // student is leon, case insensitive
-      if (params['student'].toLowerCase() === 'leon') {
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        const objToJson = {
-          name: 'leon',
-          status: 'Boss Man',
-          currentOccupation: 'Baller',
-          flip: `${flip === 1 ? 'heads' : 'tails'}`,
-        };
-        res.end(JSON.stringify(objToJson));
-        // student is anything other than leon, case insensitive
-      } else if (params['student'].toLowerCase() !== 'leon') {
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        const objToJson = {
-          name: 'unknown',
-          status: 'unknown',
-          currentOccupation: 'unknown',
-          flip: `${flip === 1 ? 'heads' : 'tails'}`,
-        };
-        res.end(JSON.stringify(objToJson));
-      }
-    }
+  }
+  else if (page === '/api/image/random') {
+    // grab a random photo from https://picsum.photos/seed/{seedtext}/600/400
+    res.writeHead(301, {
+      Location: `https://picsum.photos/600/400`,
+    });
+    res.end();
   }
   // when HTML makes a stylesheet request
-  else if (page == '/css/styles.css') {
+  else if (page === '/css/styles.css') {
     fs.readFile('css/styles.css', function (err, data) {
       res.write(data);
       res.end();
     });
     // when HTML makes a script request
-  } else if (page == '/js/main.js') {
+  } else if (page === '/js/main.js') {
     fs.readFile('js/main.js', function (err, data) {
       res.writeHead(200, { 'Content-Type': 'text/javascript' });
       res.write(data);
