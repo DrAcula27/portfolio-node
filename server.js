@@ -44,8 +44,8 @@ const server = http.createServer((req, res) => {
     }
   }
   // when HTML makes a stylesheet request
-  else if (page == '/css/style.css') {
-    fs.readFile('css/style.css', function (err, data) {
+  else if (page == '/css/styles.css') {
+    fs.readFile('css/styles.css', function (err, data) {
       res.write(data);
       res.end();
     });
