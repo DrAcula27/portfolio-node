@@ -2,5 +2,29 @@
   "dependencies": {
     "figlet": "^1.8.0",
     "http": "^0.0.1-security"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "portfolio-node",
+  "version": "1.0.0",
+  "description": "portfolio site using html, css, js, node",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrAcula27/portfolio-node.git"
+  },
+  "keywords": [
+    "portfolio",
+    "html",
+    "css",
+    "javascript",
+    "node"
+  ],
+  "author": "Danielle Andrews",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DrAcula27/portfolio-node/issues"
+  },
+  "homepage": "https://github.com/DrAcula27/portfolio-node#readme"
 }
