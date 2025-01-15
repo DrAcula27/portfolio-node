@@ -18,12 +18,11 @@ const server = http.createServer((req, res) => {
       res.write(data);
       res.end();
     });
-  } else if (page === '/api/image/random') {
+  }
+  else if (page === '/api/image/random') {
     // grab a random photo from https://picsum.photos/seed/{seedtext}/600/400
     res.writeHead(301, {
-      Location: `https://picsum.photos/seed/${Math.floor(
-        new Date().getTime() * Math.random()
-      )}/600/400`, // Redirect target URL
+      Location: `https://picsum.photos/600/400`,
     });
     res.end();
   }
