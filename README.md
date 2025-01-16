@@ -17,8 +17,6 @@
     <a href="https://dracula27.github.io/portfolio-node/">View Site</a>
   </p>
 
-![Deployment Status](https://github.com/dracula27/portfolio-node/actions/workflows/deploy.yml/badge.svg)
-
 </div>
 
 <!-- TABLE OF CONTENTS -->
