@@ -5,8 +5,10 @@ const fs = require('fs');
 const url = require('url');
 const querystring = require('querystring');
 const figlet = require('figlet');
+const https = require('https');
 
-const server = http.createServer((req, res) => {
+
+const server = http.createServer(async (req, res) => {
   const page = url.parse(req.url).pathname;
   const params = querystring.parse(url.parse(req.url).query);
   console.log(page);
@@ -32,16 +34,19 @@ const server = http.createServer((req, res) => {
         res.end(JSON.stringify(objToJson));
         // student is anything other than leon, case insensitive
       } else if (params['student'].toLowerCase() !== 'leon') {
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        const objToJson = {
-          name: 'unknown',
-          status: 'unknown',
-          currentOccupation: 'unknown',
-          flip: `${flip === 1 ? 'heads' : 'tails'}`,
-        };
+        res.writeHead(701, { 'Content-Type': 'text/html' });
         res.end(JSON.stringify(objToJson));
       }
     }
+  }
+  else if (page == '/test-route') {
+    const response = await fetch("https://zenquotes.io/api/today");
+    const jsonResponse = await response.json();
+    const quote = jsonResponse[0].q;
+    console.log(quote);
+    res.setHeader("Content-Type", "text/plain")
+    res.end(quote);
+
   }
   // when HTML makes a stylesheet request
   else if (page == '/css/styles.css') {
