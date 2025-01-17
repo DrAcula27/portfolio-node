@@ -7,3 +7,17 @@ randomImgs.forEach((img) => {
   const seed = Math.random();
   img.src = `/api/image/random?seed=${seed}`;
 });
+
+
+
+
+
+// self-invoking function
+(async function buildAnimation() {
+  const response = await fetch("/api-get-number");
+  const rnd = await response.json();
+  const outputNumber = rnd.number;
+  console.log(outputNumber);
+  const numberPlaceholder = document.getElementById("placeholder");
+  numberPlaceholder.textContent = outputNumber.toString();
+})();

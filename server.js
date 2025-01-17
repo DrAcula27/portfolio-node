@@ -24,6 +24,18 @@ const server = http.createServer((req, res) => {
     });
     res.end();
   }
+
+  /* this part here is giving me a number back to the game */
+  else if (page === '/api-get-number') {
+    res.writeHead(305, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' })
+    const rndNum = Math.floor(Math.random() * 100) + 1;
+    
+    res.end(JSON.stringify({number: rndNum}));
+  }
+
+  /* end of the number generator part here */
+
+
   // when HTML makes a stylesheet request
   else if (page === '/css/styles.css') {
     fs.readFile('css/styles.css', function (err, data) {

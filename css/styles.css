@@ -50,21 +50,25 @@ nav {
 	background-color: #333;
 	padding: 15px 0;
 }
+
 nav ul {
 	display: flex;
 	justify-content: center;
 	gap: 20px;
 	list-style: none;
 }
+
 nav li {
 	display: inline;
 }
+
 nav a {
 	color: white;
 	text-decoration: none;
 	font-weight: bold;
 	transition: color 0.3s ease;
 }
+
 nav a:hover {
 	color: #88c4d4;
 }
@@ -86,11 +90,13 @@ section {
 	border-radius: 8px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 section h2 {
 	color: #222;
 	font-size: 1.8rem;
 	margin-bottom: 20px;
 }
+
 section p {
 	font-size: 1rem;
 	margin-bottom: 15px;
@@ -190,6 +196,7 @@ section p {
 #skills {
 	margin-top: 10%;
 }
+
 #skills ul {
 	list-style-type: none;
 	display: flex;
@@ -251,4 +258,32 @@ footer {
 	padding: 10px 0;
 	font-size: 0.9rem;
 	margin-top: 20px;
+}
+
+.box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100px;
+	height: 100px;
+	background: dodgerblue;
+	margin: 10px;
+	border-radius: 50%;
+	animation: pulse 2s ease-in-out;
+}
+
+@keyframes pulse {
+
+	0%,
+	100% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.5);
+	}
+}
+
+flex {
+	display: flex;
 }
