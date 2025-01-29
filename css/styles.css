@@ -46,25 +46,30 @@ body {
 }
 
 /* Navigation Styles */
+
 nav {
 	background-color: #333;
 	padding: 15px 0;
 }
+
 nav ul {
 	display: flex;
 	justify-content: center;
 	gap: 20px;
 	list-style: none;
 }
+
 nav li {
 	display: inline;
 }
+
 nav a {
 	color: white;
 	text-decoration: none;
 	font-weight: bold;
 	transition: color 0.3s ease;
 }
+
 nav a:hover {
 	color: #88c4d4;
 }
@@ -86,11 +91,13 @@ section {
 	border-radius: 8px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 section h2 {
 	color: #222;
 	font-size: 1.8rem;
 	margin-bottom: 20px;
 }
+
 section p {
 	font-size: 1rem;
 	margin-bottom: 15px;
@@ -251,4 +258,25 @@ footer {
 	padding: 10px 0;
 	font-size: 0.9rem;
 	margin-top: 20px;
+}
+
+
+@keyframes example {
+  from {background-color: #04AA6D;}
+  to {background-color: yellow;}
+}
+
+button {
+  background-color: #04AA6D;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  animation-name: example;
+  animation-duration: 2s;
+  cursor:grab;
 }
