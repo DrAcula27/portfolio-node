@@ -5,7 +5,6 @@ const querystring = require('querystring');
 const figlet = require('figlet');
 const https = require('https');
 
-
 const server = http.createServer(async (req, res) => {
   const page = url.parse(req.url).pathname;
   const params = querystring.parse(url.parse(req.url).query);
@@ -25,27 +24,21 @@ const server = http.createServer(async (req, res) => {
       Location: `https://picsum.photos/600/400`,
     });
     res.end();
-  }
-
-  /* this part here is giving me a number back to the game */
-  else if (page === '/api-get-number') {
-    res.writeHead(305, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' })
+  } else if (page === '/api-get-number') {
+    /* this part here is giving me a number back to the game */
+    res.writeHead(305, {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    });
     const rndNum = Math.floor(Math.random() * 100) + 1;
-    
-    res.end(JSON.stringify({number: rndNum}));
-  }
-
-  /* end of the number generator part here */
-
-
-  else if (page == '/test-route') {
-    const response = await fetch("https://zenquotes.io/api/today");
+    res.end(JSON.stringify({ number: rndNum }));
+  } else if (page == '/daily-quote') {
+    const response = await fetch('https://zenquotes.io/api/today');
     const jsonResponse = await response.json();
     const quote = jsonResponse[0].q;
     console.log(quote);
-    res.setHeader("Content-Type", "text/plain")
+    res.setHeader('Content-Type', 'text/plain');
     res.end(quote);
-
   }
   // when HTML makes a stylesheet request
   else if (page === '/css/styles.css') {
