@@ -1,5 +1,3 @@
-// Features: Sections like About Me, Projects, Contact Form, and Resume; Use JavaScript for interactive elements (like animations or smooth scrolling); Host it on a platform like GitHub Pages.
-
 const http = require('http');
 const fs = require('fs');
 const url = require('url');
@@ -14,30 +12,19 @@ const server = http.createServer(async (req, res) => {
   console.log(page);
 
   // page load requests
-  if (page == '/') {
+  if (page === '/') {
     fs.readFile('index.html', function (err, data) {
       res.writeHead(200, { 'Content-Type': 'text/html' });
       res.write(data);
       res.end();
     });
-  } else if (page == '/api') {
-    if ('student' in params) {
-      // student is leon, case insensitive
-      if (params['student'].toLowerCase() === 'leon') {
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        const objToJson = {
-          name: 'leon',
-          status: 'Boss Man',
-          currentOccupation: 'Baller',
-          flip: `${flip === 1 ? 'heads' : 'tails'}`,
-        };
-        res.end(JSON.stringify(objToJson));
-        // student is anything other than leon, case insensitive
-      } else if (params['student'].toLowerCase() !== 'leon') {
-        res.writeHead(701, { 'Content-Type': 'text/html' });
-        res.end(JSON.stringify(objToJson));
-      }
-    }
+  } else if (page === '/api/image/random') {
+    // grab a random 600x400 photo from https://picsum.photos/600/400
+    // send this url back to the client to use as the source for the image
+    res.writeHead(301, {
+      Location: `https://picsum.photos/600/400`,
+    });
+    res.end();
   }
   else if (page == '/test-route') {
     const response = await fetch("https://zenquotes.io/api/today");
@@ -49,13 +36,13 @@ const server = http.createServer(async (req, res) => {
 
   }
   // when HTML makes a stylesheet request
-  else if (page == '/css/styles.css') {
+  else if (page === '/css/styles.css') {
     fs.readFile('css/styles.css', function (err, data) {
       res.write(data);
       res.end();
     });
     // when HTML makes a script request
-  } else if (page == '/js/main.js') {
+  } else if (page === '/js/main.js') {
     fs.readFile('js/main.js', function (err, data) {
       res.writeHead(200, { 'Content-Type': 'text/javascript' });
       res.write(data);
