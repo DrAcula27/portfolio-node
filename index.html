@@ -102,6 +102,14 @@
             <a href="#" class="btn" target="_blank">View Live Site</a>
             <a href="#" class="btn btn-secondary" target="_blank">View Code</a>
           </div>
+          <div class="project-card">
+            <img src="/api/placeholder/600/400" alt="Project 3 Screenshot">
+            <h3>Project 3 Name</h3>
+            <p>A custom-coded project with HTML, CSS, and JavaScript. This showcases my coding skills.</p>
+            <a href="#" class="btn" target="_blank">View Live Site</a>
+            <a href="#" class="btn btn-secondary" target="_blank">View Code</a>
+          </div>
+          <!-- Add more project cards as needed -->
         </div>
       </div>
     </section>
@@ -144,9 +152,20 @@
 
   </div>
   <!-- end of the div -->
-  <footer>
-    <p>&copy; 2025 firstName lastName. All rights reserved.</p>
-  </footer>
-</body>
+  
+    <footer>
+      <p>&copy; 2025 firstName lastName. All rights reserved.</p>
+      <a href="#"><button>Back to TOP</button></a>
+      <button type="button" id="get-quote-button">Get Quote</button>
+      <p id="todays-quote"></p>
+    </footer>
 
+    <script>
+      document.getElementById("get-quote-button").addEventListener("click", async () => {
+        const response = await fetch("/test-route");
+        const text = await response.text();
+        document.getElementById("todays-quote").innerText = text;
+      })
+    </script>
+  </body>
 </html>

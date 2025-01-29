@@ -3,8 +3,10 @@ const fs = require('fs');
 const url = require('url');
 const querystring = require('querystring');
 const figlet = require('figlet');
+const https = require('https');
 
-const server = http.createServer((req, res) => {
+
+const server = http.createServer(async (req, res) => {
   const page = url.parse(req.url).pathname;
   const params = querystring.parse(url.parse(req.url).query);
   console.log(page);
@@ -36,6 +38,15 @@ const server = http.createServer((req, res) => {
   /* end of the number generator part here */
 
 
+  else if (page == '/test-route') {
+    const response = await fetch("https://zenquotes.io/api/today");
+    const jsonResponse = await response.json();
+    const quote = jsonResponse[0].q;
+    console.log(quote);
+    res.setHeader("Content-Type", "text/plain")
+    res.end(quote);
+
+  }
   // when HTML makes a stylesheet request
   else if (page === '/css/styles.css') {
     fs.readFile('css/styles.css', function (err, data) {
