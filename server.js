@@ -26,6 +26,18 @@ const server = http.createServer(async (req, res) => {
     });
     res.end();
   }
+
+  /* this part here is giving me a number back to the game */
+  else if (page === '/api-get-number') {
+    res.writeHead(305, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' })
+    const rndNum = Math.floor(Math.random() * 100) + 1;
+    
+    res.end(JSON.stringify({number: rndNum}));
+  }
+
+  /* end of the number generator part here */
+
+
   else if (page == '/test-route') {
     const response = await fetch("https://zenquotes.io/api/today");
     const jsonResponse = await response.json();

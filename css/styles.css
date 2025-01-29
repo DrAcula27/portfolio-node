@@ -197,6 +197,7 @@ section p {
 #skills {
 	margin-top: 10%;
 }
+
 #skills ul {
 	list-style-type: none;
 	display: flex;
@@ -260,6 +261,32 @@ footer {
 	margin-top: 20px;
 }
 
+.box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100px;
+	height: 100px;
+	background: dodgerblue;
+	margin: 10px;
+	border-radius: 50%;
+	animation: pulse 2s ease-in-out;
+}
+
+@keyframes pulse {
+
+	0%,
+	100% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.5);
+	}
+}
+
+flex {
+	display: flex;
 
 @keyframes example {
   from {background-color: #04AA6D;}
